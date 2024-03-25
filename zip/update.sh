@@ -22,3 +22,17 @@
 # inject_selinux_policy -s zygote -t adb_data_file -c dir -p search
 #
 # ui_print "Update successfully installed!"
+
+ui_print "Applying Patch..."
+
+cd vendor
+local a
+a=pwd
+ui_print a
+echo "ro.surface_flinger.enable_frame_rate_override=false" >> build.prop
+
+local b
+
+file_getprop build.prop ro.surface_flinger.enable_frame_rate_override
+
+ui_print "Patched successfully!"
